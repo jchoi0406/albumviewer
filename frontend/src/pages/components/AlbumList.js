@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 export default function AlbumList(props){
     const albumsMapped = props.albums.map((album, index)=>{
         const normalStyle = {
@@ -26,6 +27,7 @@ export default function AlbumList(props){
                     <h3 className="album-artist">{album.albumArtist}</h3>
                     <p className="album-review">{album.albumReview}</p>
                 </div>
+
             </div>
     
         </div>

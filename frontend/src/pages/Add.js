@@ -15,6 +15,8 @@ export function Add() {
     setAlbumData(prevState=>(
       {...prevState, [event.target.name]: event.target.value}
     ))
+    console.log(albumData)
+
   }; 
 
   async function displaySearchAlbums(){
@@ -33,6 +35,10 @@ export function Add() {
   }
 
   async function handleClick(event){
+    if (albumData.albumRating < 0){
+      alert("Please enter a rating between 0 and 10");
+      return;
+    }
     event.preventDefault();
     try{
       const body = {
@@ -49,8 +55,8 @@ export function Add() {
 
   return (
     <form className="add-form" onSubmit={handleClick}>
-      <AddFormSearch handleChange={handleChange} displaySearchAlbums={displaySearchAlbums} searchAlbumState={searchAlbumState} setSelectedAlbum={setSelectedAlbum}/>
-      <AddFormAdd handleChange={handleChange}/>
+      <AddFormSearch handleChange={handleChange} displaySearchAlbums={displaySearchAlbums} searchAlbumState={searchAlbumState} setSelectedAlbum={setSelectedAlbum} albumData={albumData} selectedAlbum={selectedAlbum}/>
+      <AddFormAdd handleChange={handleChange} selectedAlbum={selectedAlbum} albumData={albumData}/>
     </form>
   )
 }

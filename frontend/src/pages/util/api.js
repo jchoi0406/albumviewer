@@ -18,7 +18,15 @@ export async function getAllAlbums(){
         console.log(err);
     }
 }
-
+export async function getFilteredAlbums(albumName){
+    try{
+        const res = await axios.get("http://localhost:8800/albums/"+albumName);
+        return res;
+    }
+    catch(err){
+        console.log(err);
+    }
+}
 export async function addAlbum(body){
     try{
         const res = await axios.post("http://localhost:8800/albums", body);

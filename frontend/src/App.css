@@ -75,6 +75,7 @@ button{
 .album-rating{
   font-size: 2em;
 }
+
 .add-form{
   display: flex;
   flex-direction: column;
@@ -85,7 +86,10 @@ button{
   flex-direction: column;
   align-items: center;
 }
-
+.add-form-search-input-button{
+  display: flex;
+  flex-direction: row;
+}
 .add-form-add{
   display: flex;
   flex-direction: column;
@@ -149,4 +153,15 @@ button{
 
 .update-button{
   margin-bottom: 10px;
+}
+
+.album-page-search{
+  width: 50vw;
+  border-radius: 20px;
+  min-width: 100px;
+  margin-bottom: 5px;
+  height: 4vh;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 18px;
 }

@@ -26,6 +26,13 @@ app.get("/albums", (req,res)=>{
         return (err ? res.json(err) : res.json(data));
     });
 });
+app.get("/albums/:albumName", (req, res)=>{
+    const q = "SELECT * FROM albums WHERE albumName LIKE ?"
+    const value = `%${req.params.albumName}%`;
+    db.query(q, value, (err, data)=>{
+        return (err ? res.json(err): res.json(data));
+    })
+})
 app.get("/albums/:id", (req, res)=>{
     const q = "SELECT * FROM albums WHERE id = ?"
     const value = req.params.id;
@@ -83,6 +90,8 @@ app.get("/search/:albumName", async (req, res)=>{
     const albumSearch = await searchForAlbum(albumName);
     return res.json(albumSearch);
 })
+
+
 
 app.listen(8800, ()=>{
     console.log("Connected to backend!");
