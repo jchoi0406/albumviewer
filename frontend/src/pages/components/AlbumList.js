@@ -16,7 +16,7 @@ export default function AlbumList(props){
         const selectedStyle = {...normalStyle, border: "2px solid black"} 
         
         return (
-        <div style={(index === props.selectedAlbum) ? selectedStyle: normalStyle} key={album.id} onClick={()=>props.setSelectedAlbum(index)}>
+        <div className="album" style={(index === props.selectedAlbum) ? selectedStyle: normalStyle} key={album.id} onClick={()=>props.setSelectedAlbum(index)}>
             <div className="album-left">
                 <img className="album-img" src={album.albumCover} alt=''/>
                 <p className="album-rating">{album.albumRating}/10</p>

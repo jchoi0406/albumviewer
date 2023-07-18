@@ -12,6 +12,8 @@ export const Update = () => {
   useEffect(()=>{
     async function fetchData(){
       const fetchedAlbum = await axios.get("http://localhost:8800/albums/" + albumId);
+      console.log(albumId);
+      console.log(fetchedAlbum);
       setAlbum(fetchedAlbum.data[0]);
     }
     fetchData();
@@ -33,7 +35,6 @@ export const Update = () => {
       ...(!newRating ? {albumRating: album.albumRating} : {albumRating: Number(newRating)}),
       ...(!newReview ? {albumReview: album.albumReview} : {albumReview: newReview}),
     }
-    console.log(newReview);
   
     await axios.put("http://localhost:8800/albums/"+album.id, body);
     navigate("/");

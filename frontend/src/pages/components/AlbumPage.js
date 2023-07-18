@@ -6,7 +6,7 @@ export default function AlbumPage(props){
     return(
         <div className="album-page">
             <h1>Album reviews</h1>
-            <AlbumViewSearchBar setSearchAlbumName={props.setSearchAlbumName}/>
+            <AlbumViewSearchBar setSearchAlbumName={props.setSearchAlbumName} setSelectedAlbum={props.setSelectedAlbum}/>
             <button className="add-button"><Link to="/add">Add new album</Link></button>
             <div className="albums">
                 {(props.selectedAlbum || props.selectedAlbum === 0)&& <button className="update-button"><Link to={`/update/${props.albums[props.selectedAlbum].id}`}>Update album</Link></button>}

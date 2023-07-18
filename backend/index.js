@@ -36,6 +36,7 @@ app.get("/albums/:albumName", (req, res)=>{
 app.get("/albums/:id", (req, res)=>{
     const q = "SELECT * FROM albums WHERE id = ?"
     const value = req.params.id;
+    console.log("AAAAAAAAAAA");
     db.query(q, [value], (err, data)=>{
         return (err ? res.json(err): res.json(data))
     })
