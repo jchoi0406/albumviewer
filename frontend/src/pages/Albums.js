@@ -1,16 +1,38 @@
 import { useEffect , useState} from "react";
-import { deleteAlbum, getFilteredAlbums } from "./util/api";
-import { getAllAlbums } from "./util/api";
+import { deleteAlbum, getAllAlbums, getFilteredAlbums, getUserInfo } from "./util/api";
 import AlbumPage from "./components/AlbumPage";
+import { useNavigate } from "react-router-dom";
 export function Albums(props){
+  const navigate = useNavigate();
   const [selectedAlbum, setSelectedAlbum] = useState(null);
   const albums = props.albums;
   const setAlbums = props.setAlbums;
-  const [album, setAlbum] = useState("");
   const [searchAlbumName, setSearchAlbumName] = useState("");
-  function handleChange(event){
-    setAlbum(event.target.value);
-  }
+  console.log(selectedAlbum)
+  // useEffect(()=>{
+  //   async function checkLoggedIn(){
+  //     const loggedIn = await getUserInfo().loggedIn;
+  //     if (!loggedIn){
+  //       navigate("/authenticate")
+  //     }
+  //   }
+  //   checkLoggedIn();
+  // }, [navigate])
+  useEffect(()=>{
+    const fetchAllAlbums = async () =>{
+        try{
+            const res = searchAlbumName.length > 0 ? await getFilteredAlbums(searchAlbumName): await getAllAlbums();
+            console.log(res);
+            setAlbums(res.data);
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+      fetchAllAlbums();
+  },[searchAlbumName, setAlbums])
+
+
   async function handleDelete(event){
     try{
       await deleteAlbum(albums[selectedAlbum].id)
@@ -20,20 +42,6 @@ export function Albums(props){
       console.log(err);
     }
   }
-
-  useEffect(()=>{
-    const fetchAllAlbums = async () =>{
-        try{
-            const res = await getFilteredAlbums(searchAlbumName);
-            console.log(res.data);
-            setAlbums(res.data);
-        }
-        catch(err){
-            console.log(err);
-        }
-    }
-      fetchAllAlbums();
-  },[searchAlbumName])
   
 
   return (

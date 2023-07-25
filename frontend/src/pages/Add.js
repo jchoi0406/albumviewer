@@ -15,7 +15,6 @@ export function Add() {
     setAlbumData(prevState=>(
       {...prevState, [event.target.name]: event.target.value}
     ))
-    console.log(albumData)
 
   }; 
 

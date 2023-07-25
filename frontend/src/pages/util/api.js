@@ -20,7 +20,7 @@ export async function getAllAlbums(){
 }
 export async function getFilteredAlbums(albumName){
     try{
-        const res = await axios.get("http://localhost:8800/albums/"+albumName);
+        const res = await axios.get("http://localhost:8800/albums/filter/"+albumName);
         return res;
     }
     catch(err){
@@ -45,4 +45,9 @@ export async function getSearchedAlbums(albumName){
     catch(err){
         console.log(err);
     }
+}
+
+export async function getUserInfo(){
+    const res = await axios.get("http://localhost:8800/login");
+    return res.data;
 }

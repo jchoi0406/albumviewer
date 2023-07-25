@@ -4,6 +4,7 @@ import {Albums} from "./pages/Albums";
 import {Update} from "./pages/Update";
 import {Add} from "./pages/Add";
 import { useState } from 'react';
+import Authentication from './pages/Authentication';
 import {
   BrowserRouter,
   Routes,
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Albums albums={albums} setAlbums={setAlbums}/>}/>
           <Route path="/add" element={<Add albums={albums}/>}/>
           <Route path="/update/:id" element={<Update/>}/>
+          <Route path="/authenticate" element={<Authentication/>}/>
         </Routes>
       </BrowserRouter>
     </div>

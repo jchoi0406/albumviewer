@@ -11,9 +11,8 @@ export const Update = () => {
   const navigate = useNavigate();
   useEffect(()=>{
     async function fetchData(){
-      const fetchedAlbum = await axios.get("http://localhost:8800/albums/" + albumId);
       console.log(albumId);
-      console.log(fetchedAlbum);
+      const fetchedAlbum = await axios.get("http://localhost:8800/albums/" + albumId);
       setAlbum(fetchedAlbum.data[0]);
     }
     fetchData();
