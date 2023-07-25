@@ -22,7 +22,6 @@ export function Albums(props){
     const fetchAllAlbums = async () =>{
         try{
             const res = searchAlbumName.length > 0 ? await getFilteredAlbums(searchAlbumName): await getAllAlbums();
-            console.log(res);
             setAlbums(res.data);
         }
         catch(err){

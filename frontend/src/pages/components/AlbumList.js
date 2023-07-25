@@ -29,6 +29,9 @@ export default function AlbumList(props){
                 </div>
 
             </div>
+            <div>
+                {album.dateAdded.slice(0,10)}
+            </div>
     
         </div>
         )})

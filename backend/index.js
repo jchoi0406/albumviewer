@@ -95,7 +95,7 @@ app.post("/albums", async (req,res)=>{
     if (!album || !userInput.albumReview || !userInput.albumRating){
         return false;
     }    
-    const q = "INSERT INTO albums (`id`, `albumName`, `albumRating`, `albumReview`, `albumArtist`, `albumCover`) VALUES (?)"
+    const q = "INSERT INTO albums (`id`, `albumName`, `albumRating`, `albumReview`, `albumArtist`, `albumCover`, `dateAdded`) VALUES (?)"
     const values = [
         album['id'],
         album['name'],
@@ -103,6 +103,7 @@ app.post("/albums", async (req,res)=>{
         userInput.albumReview,
         album['artists'][0]['name'],
         album['images'][1]['url'],
+        new Date().toJSON().slice(0,10),
     ]
     db.query(q, [values], (err,data)=>{
         console.log(data);
