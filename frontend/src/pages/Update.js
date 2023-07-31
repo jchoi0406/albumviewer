@@ -44,7 +44,7 @@ export const Update = () => {
     <div className='update-page'>
       <div className='album'>
         <div>  
-          <img src={album.albumCover} alt=""></img>
+          <img className="update-album-img"src={album.albumCover} alt=""></img>
           <div className='album-new-rating'>
             <input className='album-new-rating-input' type="number" defaultValue={album.albumRating || ""} onChange={handleNewRating}/>
     	      <p>/10</p>

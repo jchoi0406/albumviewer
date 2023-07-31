@@ -17,22 +17,21 @@ export default function AlbumList(props){
         
         return (
         <div className="album" style={(index === props.selectedAlbum) ? selectedStyle: normalStyle} key={album.id} onClick={()=>props.setSelectedAlbum(index)}>
-            <div className="album-left">
-                <img className="album-img" src={album.albumCover} alt=''/>
-                <p className="album-rating">{album.albumRating}/10</p>
-            </div>
-            <div className="album-info-container">
-                <div className="album-info">
-                    <h2 className="album-title">{album.albumName}</h2>
-                    <h3 className="album-artist">{album.albumArtist}</h3>
-                    <p className="album-review">{album.albumReview}</p>
+            <div className="album-container">
+                <div className="album-left">
+                    <img className="album-img" src={album.albumCover} alt=''/>
+                    <p className="album-rating">{album.albumRating}/10</p>
+                    {album.dateAdded.slice(0,10)}
                 </div>
-
+                <div className="album-info-container">
+                    <div className="album-info">
+                        <h2 className="album-title">{album.albumName}</h2>
+                        <h3 className="album-artist">{album.albumArtist}</h3>
+                        <p className="album-review">{album.albumReview}</p>
+                    </div>
+                </div>
+                <div className="album-options"></div>   
             </div>
-            <div>
-                {album.dateAdded.slice(0,10)}
-            </div>
-    
         </div>
         )})
     return albumsMapped;

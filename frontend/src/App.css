@@ -31,12 +31,19 @@ button{
   align-items: center;
   text-align: center;
 }
-.album{
-  min-width: 50vw;
 
+
+.album-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.album-info-options{
+  display: flex;
 }
 .album-new-rating{
   display: flex;
+  justify-content: center;
 
 }
 .album-textarea{
@@ -51,8 +58,12 @@ button{
 .album-info-container{
   display: flex;
   justify-content: center;
+  width: 50em;
+
 }
 .album-info{
+  display: flex;
+  flex-direction: column;
   margin-top: 2vh;
   margin-left: 2vw;
 }
@@ -60,12 +71,16 @@ button{
 .album-img{
   max-width: 125px;
   max-height: 125px;
+  border-radius: 5px;
 }
 .album-title{
   border-bottom: 2px solid black;
 }
 .album-rating{
   font-size: 2em;
+}
+.album-date-added{
+  white-space: nowrap;
 }
 
 .add-form{
@@ -118,6 +133,7 @@ button{
   width: auto;
   max-width: 100px;
   max-height: 100px;
+  border-radius: 5px;
 }
 
 .search-album-name{
@@ -146,7 +162,9 @@ button{
 .update-button{
   margin-bottom: 10px;
 }
-
+.update-album-img{
+  border-radius: 10px;
+}
 .album-page-search{
   width: 50vw;
   border-radius: 20px;
@@ -156,4 +174,15 @@ button{
   padding-left: 10px;
   padding-right: 10px;
   font-size: 18px;
+}
+.album-options{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+}
+.album-options:after{
+  content: "\22EF";
+  font-size: 20px;
+  
 }
