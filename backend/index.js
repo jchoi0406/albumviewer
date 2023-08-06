@@ -104,6 +104,7 @@ app.post("/albums", async (req,res)=>{
         album['artists'][0]['name'],
         album['images'][1]['url'],
         new Date().toJSON().slice(0,10),
+
     ]
     db.query(q, [values], (err,data)=>{
         console.log(data);

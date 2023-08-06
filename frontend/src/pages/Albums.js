@@ -4,11 +4,10 @@ import AlbumPage from "./components/AlbumPage";
 import { useNavigate } from "react-router-dom";
 export function Albums(props){
   const navigate = useNavigate();
-  const [selectedAlbum, setSelectedAlbum] = useState(null);
+  const [selectedAlbum, setSelectedAlbum] = useState(0);
   const albums = props.albums;
   const setAlbums = props.setAlbums;
   const [searchAlbumName, setSearchAlbumName] = useState("");
-  console.log(selectedAlbum)
   // useEffect(()=>{
   //   async function checkLoggedIn(){
   //     const loggedIn = await getUserInfo().loggedIn;

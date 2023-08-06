@@ -1,26 +1,14 @@
 import React from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import { Link } from "react-router-dom"
 export default function AlbumList(props){
     const albumsMapped = props.albums.map((album, index)=>{
-        const normalStyle = {
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: "space-between",
-            wordWrap: 'break-word',
-            border: '2px solid #CCCCCC',
-            borderRadius: '10px',
-            padding: '10px',
-            marginBottom: '10px',
-            maxWidth: '50vw',
-            cursor: 'pointer',
-        }
-        const selectedStyle = {...normalStyle, border: "2px solid black"} 
+
         function optionClicked(event){
-            console.log("clicked!")
+            props.setSelectedAlbum(index);
         }
         return (
-        <div className="album-display" style={(index === props.selectedAlbum) ? selectedStyle: normalStyle} key={album.id} /*onClick={()=>props.setSelectedAlbum(index)}*/>
+        <div className="album-display">
             <div className="album">
                 <div className="album-container">
                     <div className="album-left">
@@ -38,9 +26,10 @@ export default function AlbumList(props){
                 </div>
             </div>
             <div className="album-options" onClick={optionClicked}>
-                <button className="options"><FontAwesomeIcon icon="fa-solid fa-ellipsis" /></button>
+                <button className="options"><i class="fas fa-ellipsis-v"></i></button>
                 <div className="dropdown-menu">
-                    Dropdown Content
+                    <button className="update-button"><Link to={`/update/${props.albums[props.selectedAlbum].id}`}>Update album</Link></button>
+                    <button className="delete-button" onClick={props.handleDelete}>Delete</button>
                 </div>
             </div>   
         </div>

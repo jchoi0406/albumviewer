@@ -39,7 +39,17 @@ button{
   justify-content: space-between;
 }
 
-
+.album-display{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  word-wrap: break-word;
+  border: 2px solid #CCCCCC;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  max-width: 50vw;
+}
 .album-new-rating{
   display: flex;
   justify-content: center;
@@ -159,6 +169,17 @@ button{
 
 .update-button{
   margin-bottom: 10px;
+  border-radius: 0px;
+  border: none;
+  text-decoration: none;
+  display: block;
+
+
+}
+.delete-button{
+  display: block;
+  border-radius: 0px;
+  border: none;
 }
 .update-album-img{
   border-radius: 10px;
@@ -182,17 +203,27 @@ button{
 .dropdown-menu{
   position: absolute;
   left: 0;
-  top: 55%;
-  background-color: white;
+  top: 60%;
+  background-color: #FAFAF0;
   padding: .75rem;
   border-radius: .25rem;
-  box-shadow: 0, 2px 5px 0 rgba(0, 0, 0, .1);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  pointer-events: none;
 }
 .album-options > .options:focus + .dropdown-menu{
   opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+
 }
 .album-options:after{
   font-size: 20px;
   
+}
+.options{
+  cursor: pointer;
+  padding: 5px;
 }
