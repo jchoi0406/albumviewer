@@ -1,5 +1,4 @@
 import React from "react"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom"
 export default function AlbumList(props){
     const albumsMapped = props.albums.map((album, index)=>{
@@ -28,7 +27,7 @@ export default function AlbumList(props){
             <div className="album-options" onClick={optionClicked}>
                 <button className="options"><i class="fas fa-ellipsis-v"></i></button>
                 <div className="dropdown-menu">
-                    <button className="update-button"><Link to={`/update/${props.albums[props.selectedAlbum].id}`}>Update album</Link></button>
+                    <a><Link className="update-link"to={props.selectedAlbum ? `/update/${props.albums[props.selectedAlbum].id}` : ""}>Update</Link></a>
                     <button className="delete-button" onClick={props.handleDelete}>Delete</button>
                 </div>
             </div>   

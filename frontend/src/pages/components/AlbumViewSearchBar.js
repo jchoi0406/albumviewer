@@ -1,8 +1,6 @@
 import React from 'react'
-import { useState } from 'react';
 export default function AlbumViewSearchBar(props) {
   function handleChange(event){
-    props.setSelectedAlbum(null);
     props.setSearchAlbumName(event.target.value);
   }
   return (

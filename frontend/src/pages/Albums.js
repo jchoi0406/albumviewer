@@ -3,8 +3,7 @@ import { deleteAlbum, getAllAlbums, getFilteredAlbums, getUserInfo } from "./uti
 import AlbumPage from "./components/AlbumPage";
 import { useNavigate } from "react-router-dom";
 export function Albums(props){
-  const navigate = useNavigate();
-  const [selectedAlbum, setSelectedAlbum] = useState(0);
+  const [selectedAlbum, setSelectedAlbum] = useState(null);
   const albums = props.albums;
   const setAlbums = props.setAlbums;
   const [searchAlbumName, setSearchAlbumName] = useState("");
