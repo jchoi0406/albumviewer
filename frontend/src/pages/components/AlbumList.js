@@ -7,7 +7,7 @@ export default function AlbumList(props){
             props.setSelectedAlbum(index);
         }
         return (
-        <div className="album-display">
+        <div className="album-display" key={album.id}>
             <div className="album">
                 <div className="album-container">
                     <div className="album-left">
@@ -25,9 +25,9 @@ export default function AlbumList(props){
                 </div>
             </div>
             <div className="album-options" onClick={optionClicked}>
-                <button className="options"><i class="fas fa-ellipsis-v"></i></button>
+                <button className="options"><i className="fas fa-ellipsis-v"></i></button>
                 <div className="dropdown-menu">
-                    <a><Link className="update-link"to={props.selectedAlbum ? `/update/${props.albums[props.selectedAlbum].id}` : ""}>Update</Link></a>
+                    <Link className="update-link"to={props.selectedAlbum ? `/update/${props.albums[props.selectedAlbum].id}` : ""}>Update</Link>
                     <button className="delete-button" onClick={props.handleDelete}>Delete</button>
                 </div>
             </div>   

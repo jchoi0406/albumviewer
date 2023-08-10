@@ -3,17 +3,16 @@ import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 export const Update = () => {
-  const [album, setAlbum] = useState({});
+  const [album, setAlbum] = useState({});  // album data from spotify
   const location = useLocation();
   const albumId = location.pathname.split("/")[2];
-  const [newRating, setNewRating] = useState("");
-  const [newReview, setNewReview] = useState("");
+  const [newRating, setNewRating] = useState("");  // ratings
+  const [newReview, setNewReview] = useState("");  // reviews
   const navigate = useNavigate();
   useEffect(()=>{
     async function fetchData(){
-      console.log(albumId);
-      const fetchedAlbum = await axios.get("http://localhost:8800/albums/" + albumId);
-      setAlbum(fetchedAlbum.data[0]);
+      const fetchedAlbum = await axios.get("http://localhost:8800/albums/" + albumId);  // get request to api
+      setAlbum(fetchedAlbum.data[0]);  // get first item
     }
     fetchData();
 
@@ -31,8 +30,8 @@ export const Update = () => {
     event.preventDefault();
 
     const body = {
-      ...(!newRating ? {albumRating: album.albumRating} : {albumRating: Number(newRating)}),
-      ...(!newReview ? {albumReview: album.albumReview} : {albumReview: newReview}),
+      ...(!newRating ? {albumRating: album.albumRating} : {albumRating: Number(newRating)}),  // if rating is different to last time
+      ...(!newReview ? {albumReview: album.albumReview} : {albumReview: newReview}),  // if review is different to last time
     }
   
     await axios.put("http://localhost:8800/albums/"+album.id, body);

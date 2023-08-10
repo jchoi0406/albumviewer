@@ -7,19 +7,11 @@ export function Albums(props){
   const albums = props.albums;
   const setAlbums = props.setAlbums;
   const [searchAlbumName, setSearchAlbumName] = useState("");
-  // useEffect(()=>{
-  //   async function checkLoggedIn(){
-  //     const loggedIn = await getUserInfo().loggedIn;
-  //     if (!loggedIn){
-  //       navigate("/authenticate")
-  //     }
-  //   }
-  //   checkLoggedIn();
-  // }, [navigate])
+
   useEffect(()=>{
     const fetchAllAlbums = async () =>{
         try{
-            const res = searchAlbumName.length > 0 ? await getFilteredAlbums(searchAlbumName): await getAllAlbums();
+            const res = searchAlbumName.length > 0 ? await getFilteredAlbums(searchAlbumName): await getAllAlbums();  // if nothing is searched, get all albums else get filtered albums
             setAlbums(res.data);
         }
         catch(err){

@@ -5,12 +5,12 @@ import AddFormSearch from './components/AddFormSearch';
 import AddFormAdd from './components/AddFormAdd';
 export function Add() {
   const navigate = useNavigate();
-  const [albumData, setAlbumData] = useState({
+  const [albumData, setAlbumData] = useState({  // data from user input
     albumReview: "",
     albumRating: null,
   });
-  const [searchAlbumState, setSearchAlbumState] = useState([]);
-  const [selectedAlbum, setSelectedAlbum] = useState(null);
+  const [searchAlbumState, setSearchAlbumState] = useState([]);  // searched album data
+  const [selectedAlbum, setSelectedAlbum] = useState(null);  // album selected
   function handleChange(event){
     setAlbumData(prevState=>(
       {...prevState, [event.target.name]: event.target.value}
@@ -19,7 +19,7 @@ export function Add() {
   }; 
 
   async function displaySearchAlbums(){
-    const albums = await searchAlbums();
+    const albums = await searchAlbums(); 
     setSearchAlbumState(albums.items);
   }
   async function searchAlbums(){
